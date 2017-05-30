@@ -65,3 +65,9 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+FlagKits/Example/Pods
+.gitkeep
+*.xcworkspacedata
+*.xcscheme
+*.pbxproj
+Example/Pods
