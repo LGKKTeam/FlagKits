@@ -22,7 +22,7 @@ pod "FlagKits"
 
 ## Author
 
-nguyenminhkhmt@gmail.com, nguyenminhkhmt@gmail.com
+nguyenminhkhmt@gmail.com
 
 ## License
 

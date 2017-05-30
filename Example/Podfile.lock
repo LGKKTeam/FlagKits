@@ -4,7 +4,10 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - FlagKits (1.0.0)
+  - FlagKits (1.0.0):
+    - libPhoneNumber-iOS
+    - Reusable
+  - libPhoneNumber-iOS (0.9.10)
   - Nimble (5.1.1)
   - Nimble-Snapshots (4.4.0):
     - Nimble-Snapshots/Core (= 4.4.0)
@@ -13,6 +16,11 @@ PODS:
     - Nimble
     - Quick
   - Quick (1.0.0)
+  - Reusable (4.0.0):
+    - Reusable/Storyboard (= 4.0.0)
+    - Reusable/View (= 4.0.0)
+  - Reusable/Storyboard (4.0.0)
+  - Reusable/View (4.0.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -27,10 +35,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
-  FlagKits: dd77f395bf6272f1f3c1ca08b5c6a9353f470e0a
+  FlagKits: 567dce6bff7545d4c004abfb57f58d7eea62b94c
+  libPhoneNumber-iOS: f721ae4d5854bce60934f9fb9b0b28e8e68913cb
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
 
 PODFILE CHECKSUM: 1eaff4ee9aa1981beb8592283fa97fccecb730a9
 
