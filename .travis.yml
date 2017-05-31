@@ -4,9 +4,9 @@
 
 osx_image: xcode8.3
 language: swift
-# xcode_workspace: Example/FlagKits.xcworkspace 
-# xcode_project: Example/FlagKits.xcodeproj
-# xcode_scheme: FlagKits
+xcode_workspace: Example/FlagKits.xcworkspace
+xcode_project: Example/FlagKits.xcodeproj
+xcode_scheme: FlagKits-Example
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
