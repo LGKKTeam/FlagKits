@@ -3,12 +3,22 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 osx_image: xcode8.3
-language: swift
+language: objective-c
+env:
+  - DESTINATION="OS=10.2,name=iPhone 7" SCHEME="FlagKits-Example" SDK=iphonesimulator
+before_install:
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+
 xcode_workspace: Example/FlagKits.xcworkspace
 xcode_project: Example/FlagKits.xcodeproj
 xcode_scheme: FlagKits-Example
 cache: cocoapods
 podfile: Example/Podfile
 script:
-- set -o pipefail && xcodebuild test -workspace Example/FlagKits.xcworkspace -scheme FlagKits-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -workspace Example/FlagKits.xcworkspace -project Example/FlagKits.xcodeproj -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - pod lib lint
+# - set -o pipefail && xcodebuild test -workspace Example/FlagKits.xcworkspace -scheme FlagKits-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
