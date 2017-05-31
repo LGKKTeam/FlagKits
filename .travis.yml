@@ -11,15 +11,14 @@ before_install:
   # - brew update
   # - brew outdated carthage || brew upgrade carthage
 
-# xcode_workspace: Example/FlagKits.xcworkspace
-# xcode_project: Example/FlagKits.xcodeproj
-# xcode_scheme: FlagKits-Example
+xcode_workspace: Example/FlagKits.xcworkspace
+xcode_project: Example/FlagKits.xcodeproj
+xcode_scheme: FlagKits-Example
 cache: cocoapods
 podfile: Example/Podfile
 script:
-  - ls
   - pod update
   - set -o pipefail
-  - xcodebuild -version
-  - xcodebuild -workspace FlagKits.xcworkspace -project FlagKits.xcodeproj -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -workspace Example/FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -workspace Example/FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
   - pod lib lint
