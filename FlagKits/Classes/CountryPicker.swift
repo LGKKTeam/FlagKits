@@ -98,6 +98,10 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
         return 1
     }
     
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40
+    }
+    
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return countries.count
     }
@@ -116,7 +120,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
             resultView.setup(country: countries[row])
             return resultView
         } else {
-            fatalError("CountryView invalid, please double check")
+            fatalError("CountryView invalid, double check pls!")
         }
     }
     

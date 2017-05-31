@@ -4,7 +4,8 @@ platform :ios, '9.0'
 
 target 'FlagKits_Example' do
   pod 'FlagKits', :path => '../'
-
+  pod 'IQKeyboardManagerSwift'
+  
   target 'FlagKits_Tests' do
     inherit! :search_paths
 

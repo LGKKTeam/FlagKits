@@ -14,13 +14,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
   s.source_files = 'FlagKits/Classes/**/*.{h,m,swift}'
-
-  s.resource_bundles = {
-      'FlagKits' => ['FlagKits/Assets/*.{png,jpg,jpeg,gif,xib,storyboard,bundle}']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.resource = 'FlagKits/Assets/*.{png,jpg,jpeg,gif,xib,storyboard,bundle}'
   
   s.dependency 'Reusable'
   s.dependency 'libPhoneNumber-iOS'

@@ -10,15 +10,5 @@ import UIKit
 import FlagKits
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setUI()
-    }
-    
-    func setUI() {
-        
-    }
 }
 

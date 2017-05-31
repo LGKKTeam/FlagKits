@@ -18,11 +18,11 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
     @IBOutlet fileprivate weak var btnFlag: UIButton!
     @IBOutlet fileprivate weak var lblPhoneCode: UILabel!
     @IBOutlet fileprivate weak var tfPhone: UITextField!
-    @IBOutlet fileprivate weak var line: UIView!
-    @IBOutlet fileprivate weak var lineHeight: NSLayoutConstraint!
+    
+    open var backgroundPickerColor: UIColor? = .white
     
     open weak var delegate: CountryPhoneHolderDelegate?
-    private var hiddenTfChooseCountry: UITextField?
+    fileprivate var hiddenTfChooseCountry: UITextField?
     open var phoneCode: String? = "+1" // US default
     
     open var phone: String? {
@@ -35,6 +35,13 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
         } else {
             return nil
         }
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.loadNibContent()
+        setUI()
     }
     
     init() {
@@ -52,16 +59,14 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
         setUI()
     }
     
+    override open func becomeFirstResponder() -> Bool {
+        return tfPhone.becomeFirstResponder()
+    }
+    
     func setUI() {
-        // Trick:
-        hiddenTfChooseCountry = UITextField()
-        if let hiddenTfChooseCountry = hiddenTfChooseCountry {
-            addSubview(hiddenTfChooseCountry)
-        }
-        
         backgroundColor = .clear
         tfPhone.delegate = self
-        tfPhone.placeholder = "Enter mobile number"
+        tfPhone.placeholder = "Phone number"
         tfPhone.keyboardType = .phonePad
         phoneCode = "+1"
         setFlag(with: "us")
@@ -78,11 +83,23 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
         endEditing(true)
         let screenWidth = UIScreen.main.bounds.width
         let countryPicker = CountryPicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 260))
-        countryPicker.backgroundColor = .white
+        countryPicker.backgroundColor = backgroundPickerColor
         countryPicker.countryPhoneCodeDelegate = self
         countryPicker.setCountry(code: "us")
+        
+        // Trick:
+        hiddenTfChooseCountry = UITextField()
+        hiddenTfChooseCountry?.delegate = self
+        if let hiddenTfChooseCountry = hiddenTfChooseCountry {
+            addSubview(hiddenTfChooseCountry)
+        }
         hiddenTfChooseCountry?.inputView = countryPicker
         hiddenTfChooseCountry?.becomeFirstResponder()
+    }
+    
+    fileprivate func removeHiddenTf() {
+        hiddenTfChooseCountry?.removeFromSuperview()
+        hiddenTfChooseCountry = nil
     }
 }
 
@@ -100,19 +117,8 @@ extension CountryPhoneHolderView: CountryPickerDelegate {
 
 // MARK: - UITextFieldDelegate
 extension CountryPhoneHolderView: UITextFieldDelegate {
-    
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == tfPhone {
-            line.backgroundColor = UIColor.darkGray
-            lineHeight.constant = 2.0
-            line.updateConstraints()
-        }
-    }
-    
     // Pair becomeFirstResponder & countryPhoneShouldReturn
-    override open func becomeFirstResponder() -> Bool {
-        return tfPhone.becomeFirstResponder()
-    }
+    
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let delegate = delegate, textField == tfPhone {
             return delegate.countryPhoneShouldReturn()
@@ -130,10 +136,6 @@ extension CountryPhoneHolderView: UITextFieldDelegate {
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == tfPhone, let text = textField.text {
-            line.backgroundColor = UIColor.lightGray
-            lineHeight.constant = text.isEmpty ? 2.0 : 0.5
-            line.updateConstraints()
-        }
+        removeHiddenTf()
     }
 }
