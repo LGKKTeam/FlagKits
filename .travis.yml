@@ -8,14 +8,14 @@ env:
   - DESTINATION="OS=10.2,name=iPhone 7" SCHEME="FlagKits-Example" SDK=iphonesimulator
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-  # - brew update
-  # - brew outdated carthage || brew upgrade carthage
-
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - cd Example
 # xcode_workspace: Example/FlagKits.xcworkspace
 # xcode_project: Example/FlagKits.xcodeproj
 # xcode_scheme: FlagKits-Example
 cache: cocoapods
-# podfile: Example/Podfile
+podfile: Example/Podfile
 script:
   - pod update
   - set -o pipefail
