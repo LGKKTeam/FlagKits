@@ -1,3 +1,5 @@
+
+![LAM GIAU KHONG KHO TEAM](sample.gif)
 # FlagKits
 
 [![CI Status](https://travis-ci.org/LGKKTeam/FlagKits.svg?branch=master)](https://travis-ci.org/LGKKTeam/FlagKits)
