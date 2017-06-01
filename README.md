@@ -1,6 +1,6 @@
 # FlagKits
 
-[![CI Status](http://img.shields.io/travis/nguyenminhkhmt@gmail.com/FlagKits.svg?style=flat)](https://travis-ci.org/LGKKTeam/FlagKits)
+[![CI Status](https://travis-ci.org/LGKKTeam/FlagKits.svg?branch=master)](https://travis-ci.org/LGKKTeam/FlagKits)
 [![Version](https://img.shields.io/cocoapods/v/FlagKits.svg?style=flat)](http://cocoapods.org/pods/FlagKits)
 [![License](https://img.shields.io/cocoapods/l/FlagKits.svg?style=flat)](http://cocoapods.org/pods/FlagKits)
 [![Platform](https://img.shields.io/cocoapods/p/FlagKits.svg?style=flat)](http://cocoapods.org/pods/FlagKits)

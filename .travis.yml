@@ -17,5 +17,5 @@ script:
   - pod update
   - set -o pipefail
   - xcodebuild -workspace FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xcodebuild test -workspace FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - cd ..
   - pod lib lint
