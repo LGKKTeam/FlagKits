@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/LGKKTeam/FlagKits'
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'nguyenminhkhmt@gmail.com' => 'nguyenminhkhmt@gmail.com' }
+  s.author           = { 'NguyenMinh' => 'nguyenminhkhmt@gmail.com' }
   s.source           = { :git => 'https://github.com/LGKKTeam/FlagKits.git', :branch => 'master', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'

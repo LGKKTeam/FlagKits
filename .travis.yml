@@ -11,11 +11,11 @@ before_install:
   # - brew update
   # - brew outdated carthage || brew upgrade carthage
 
-xcode_workspace: Example/FlagKits.xcworkspace
-xcode_project: Example/FlagKits.xcodeproj
-xcode_scheme: FlagKits-Example
+# xcode_workspace: Example/FlagKits.xcworkspace
+# xcode_project: Example/FlagKits.xcodeproj
+# xcode_scheme: FlagKits-Example
 cache: cocoapods
-podfile: Example/Podfile
+# podfile: Example/Podfile
 script:
   - pod update
   - set -o pipefail
