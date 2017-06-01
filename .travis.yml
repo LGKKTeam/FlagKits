@@ -10,12 +10,12 @@ before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - brew update
   - brew outdated carthage || brew upgrade carthage
-  # - cd Example
+  - cd Example
 cache: cocoapods
 podfile: Example/Podfile
 script:
-  - pod update --project-directory Example
+  - pod update
   - set -o pipefail
-  - xcodebuild -workspace Example/FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xcodebuild test -workspace Example/FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -workspace FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -workspace FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
   - pod lib lint
