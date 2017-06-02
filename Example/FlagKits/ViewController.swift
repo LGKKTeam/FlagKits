@@ -12,6 +12,12 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController {
+    @IBOutlet weak var holder: FKFlagHolderView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        holder.backgroundPickerColor = .white
+    }
 }
 

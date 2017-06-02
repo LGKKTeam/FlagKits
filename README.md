@@ -20,7 +20,28 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Usage
 
+* Set custom class with FKFlagHolderView on IB Design or create instance of FKFlagHolderView by code.
 
+<center>
+    <img src="Screen_Shot_1.jpg" width="200" alt="Set custom class: FKFlagHolderView"/>
+</center>
+
+* Set background color for picker view:
+
+```
+@IBOutlet weak var holder: FKFlagHolderView!
+
+// Set background color for picker view
+holder.backgroundPickerColor = .white
+```
+
+* Get flag image:
+```
+if let flagSheet = FKIcons.sharedInstance.spriteSheet {
+    let image = flagSheet.getImageFor(code)
+    btnFlag.setImage(image, for: .normal)
+}
+```
 
 ## Installation
 
