@@ -1,5 +1,5 @@
 //
-//  FlagIcons.swift
+//  FKIcons.swift
 //  FlagKits
 //
 //  Created by Nguyen Minh on 3/28/17.
@@ -201,14 +201,14 @@ open class SpriteSheet {
     }
 }
 
-open class FlagIcons: NSObject {
-    static let sharedInstance = FlagIcons()
+open class FKIcons: NSObject {
+    static let sharedInstance = FKIcons()
     var spriteSheet: SpriteSheet?
     
     override init() {
         super.init()
         
-        spriteSheet = FlagIcons.loadDefault()
+        spriteSheet = FKIcons.loadDefault()
     }
     
     open class func loadDefault() -> SpriteSheet? {

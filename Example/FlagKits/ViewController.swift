@@ -8,7 +8,10 @@
 
 import UIKit
 import FlagKits
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
+    
 }
 

@@ -1,5 +1,5 @@
 //
-//  CountryPhoneHolderView.swift
+//  FKFlagHolderView.swift
 //  FlagKits
 //
 //  Created by Nguyen Minh on 4/3/17.
@@ -9,11 +9,11 @@
 import UIKit
 import Reusable
 
-public protocol CountryPhoneHolderDelegate: class {
+public protocol FKFlagHolderDelegate: class {
     func countryPhoneShouldReturn() -> Bool
 }
 
-open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
+open class FKFlagHolderView: UIView, NibOwnerLoadable {
     
     @IBOutlet fileprivate weak var btnFlag: UIButton!
     @IBOutlet fileprivate weak var lblPhoneCode: UILabel!
@@ -21,7 +21,7 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
     
     open var backgroundPickerColor: UIColor? = .white
     
-    open weak var delegate: CountryPhoneHolderDelegate?
+    open weak var delegate: FKFlagHolderDelegate?
     fileprivate var hiddenTfChooseCountry: UITextField?
     open var phoneCode: String? = "+1" // US default
     
@@ -73,7 +73,7 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
     }
     
     fileprivate func setFlag(with code: String) {
-        if let flagSheet = FlagIcons.sharedInstance.spriteSheet {
+        if let flagSheet = FKIcons.sharedInstance.spriteSheet {
             let image = flagSheet.getImageFor(code)
             btnFlag.setImage(image, for: .normal)
         }
@@ -82,7 +82,7 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
     @IBAction func btnFlag_Tapped(_ sender: Any) {
         endEditing(true)
         let screenWidth = UIScreen.main.bounds.width
-        let countryPicker = CountryPicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 260))
+        let countryPicker = FKFKCountryPicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 260))
         countryPicker.backgroundColor = backgroundPickerColor
         countryPicker.countryPhoneCodeDelegate = self
         countryPicker.setCountry(code: "us")
@@ -104,8 +104,8 @@ open class CountryPhoneHolderView: UIView, NibOwnerLoadable {
 }
 
 // MARK: - Country picker delegate
-extension CountryPhoneHolderView: CountryPickerDelegate {
-    func countryPhoneCodePicker(picker: CountryPicker,
+extension FKFlagHolderView: FKCountryPickerDelegate {
+    func countryPhoneCodePicker(picker: FKFKCountryPicker,
                                 didSelectCountryCountryWithName name: String,
                                 countryCode: String,
                                 phoneCode: String) {
@@ -116,7 +116,7 @@ extension CountryPhoneHolderView: CountryPickerDelegate {
 }
 
 // MARK: - UITextFieldDelegate
-extension CountryPhoneHolderView: UITextFieldDelegate {
+extension FKFlagHolderView: UITextFieldDelegate {
     // Pair becomeFirstResponder & countryPhoneShouldReturn
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

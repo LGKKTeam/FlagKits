@@ -1,5 +1,5 @@
 //
-//  CountryPicker.swift
+//  FKCountryPicker.swift
 //  FlagKits
 //
 //  Created by Nguyen Minh on 3/29/17.
@@ -9,8 +9,8 @@
 import UIKit
 import libPhoneNumber_iOS
 
-protocol CountryPickerDelegate: class {
-    func countryPhoneCodePicker(picker: CountryPicker,
+protocol FKCountryPickerDelegate: class {
+    func countryPhoneCodePicker(picker: FKFKCountryPicker,
                                 didSelectCountryCountryWithName name: String,
                                 countryCode: String,
                                 phoneCode: String)
@@ -28,10 +28,10 @@ public struct Country {
     }
 }
 
-open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+open class FKFKCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var countries: [Country]!
-    weak var countryPhoneCodeDelegate: CountryPickerDelegate?
+    weak var countryPhoneCodeDelegate: FKCountryPickerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,15 +112,15 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
                            reusing view: UIView?) -> UIView {
         var resultView: Any
         if view == nil {
-            resultView = Bundle(for: CountryView.self).loadNibNamed("CountryView", owner: self)?.first as Any
+            resultView = Bundle(for: FKFlagView.self).loadNibNamed("FKFlagView", owner: self)?.first as Any
         } else {
             resultView = view as Any
         }
-        if let resultView = resultView as? CountryView {
+        if let resultView = resultView as? FKFlagView {
             resultView.setup(country: countries[row])
             return resultView
         } else {
-            fatalError("CountryView invalid, double check pls!")
+            fatalError("FKFlagView invalid, double check pls!")
         }
     }
     

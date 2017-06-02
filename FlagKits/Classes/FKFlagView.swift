@@ -1,5 +1,5 @@
 //
-//  CountryView.swift
+//  FKFlagView.swift
 //  FlagKits
 //
 //  Created by Nguyen Minh on 3/29/17.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-let flagSheet = FlagIcons.loadDefault()
+let flagSheet = FKIcons.loadDefault()
 
-open class CountryView: UIView {
+open class FKFlagView: UIView {
     
     @IBOutlet fileprivate weak var flagImageView: UIImageView!
     @IBOutlet fileprivate weak var countryNameLabel: UILabel!
@@ -25,7 +25,7 @@ open class CountryView: UIView {
     }
     
     fileprivate func getFlag(with code: String) -> UIImage? {
-        if let flagSheet = FlagIcons.sharedInstance.spriteSheet {
+        if let flagSheet = FKIcons.sharedInstance.spriteSheet {
             return flagSheet.getImageFor(code)
         } else {
             return nil

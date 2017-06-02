@@ -1,21 +1,38 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
 osx_image: xcode8.3
 language: objective-c
+xcode_project: 
+xcode_scheme: 
+xcode_sdk: iphonesimulator9.3
 env:
+  global:
+  - FRAMEWORK_NAME=FlagKits
   - DESTINATION="OS=10.2,name=iPhone 7" SCHEME="FlagKits-Example" SDK=iphonesimulator
 before_install:
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-  - brew update
-  - brew outdated carthage || brew upgrade carthage
-  - cd Example
+- brew update
+- brew outdated carthage || brew upgrade carthage
+- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+- brew outdated carthage || brew upgrade carthage
+- cd Example
+before_script:
+- carthage bootstrap
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
 cache: cocoapods
 podfile: Example/Podfile
 script:
-  - pod update
-  - set -o pipefail
-  - xcodebuild -workspace FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - cd ..
-  - pod lib lint
+- pod update
+- set -o pipefail
+- xcodebuild -workspace FlagKits.xcworkspace -scheme "FlagKits-Example" -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO
+- cd ..
+- pod lib lint
+deploy:
+  provider: releases
+  api_key:
+    secure: 0h3ne4pEk6UmQhXANswvREMvToHsh2i3peZiZtWpjCx2tdrZhSb3qdMexUxVX4+325I0GndA74aw4vUd3AleHOlfHutpvNM/5/Bm6/VnXNsXYCp3ICCO+zyvukSB0gupARLzWrg77cV4j8vi2U6pmEjMzoIXB7PwwEXPBygeqNQ0/7J19VMJ+Ejc6PSXO1Pc0PO8reQSWIZApprWsU7yjybUNKZsvKp01YxFfMIVR4fyUGDU2TbTyETH2jGeuPt+v+vNr9PkAVP8eCWDSBa5w5aTnq2Mn5aiE0WK4GHXKnG9HzcRZnMCB/cjqaOeP+fKRly9hcCTstU9wIpgqXeSlvO+czvewS0L7/YGataQbZCYoTc6Eqskk36SIRlofNgQJZO/xhT4GWjpB0Vc3Ul10r/XjFHWRXQmwE2fNgl/lJPLRA3Tmhlct12MZe6eXFw7qmbnHL+wYOcrAi1u6IhZMY+ijd1PlC9UbVq057CJnSaHX2CGBtg6R4XFYUN2C+ll/EtBKF0fgFlYOXWJk7dfmE7T2KeklnOgruNmCJCN3f9I3yiklL9VnXTm86BErMUKle6vtv5Y7NwG4mHjdxJ5WV2v1Kclwn8ViAroY6r9wNsn4Cuw4SGWS6fRb8u/v1Bo93yr8N8twU+zK801ZArHcMxtWpD+kdO+VieoZDtWMxI=
+  file: FlagKits.framework.zip
+  on:
+    repo: LGKKTeam/FlagKits
+    tags: true
+    
