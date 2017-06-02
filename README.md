@@ -22,9 +22,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 * Set custom class with FKFlagHolderView on IB Design or create instance of FKFlagHolderView by code.
 
-<center>
-    <img src="Screen_Shot_1.jpg" width="200" alt="Set custom class: FKFlagHolderView"/>
-</center>
+![](Screen_Shot_1.png)
 
 * Set background color for picker view:
 
