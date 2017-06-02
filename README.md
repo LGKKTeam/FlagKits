@@ -98,7 +98,7 @@ $ git submodule add https://github.com/LGKKTeam/FlagKits.git
 
 ## Author
 
-* [Nguyen Minh](https://github.com/nguyenminhkhmt) [Email] (nguyenminhkhmt@gmail.com)
+* [Nguyen Minh](https://github.com/nguyenminhkhmt) with [email](nguyenminhkhmt@gmail.com)
 
 ## License
 
